@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> CS4Good </title>
+    <meta charset="utf-8">
+    <link rel="StyleSheet" href="style.css">
+  </head>
+  <body>
+    <header id = "box">
+      <nav>
+        <ul class = "b">
+          <li class="a"><a href="index.html">Home</a></li>
+          <li class="a"><a href="data.html">Data</a></li>
+          <li class="a"><a href="LineReg.html">Linear Regression</a></li>
+          <li class="a"><a href="code.html">Program Code</a></li>
+          <li class="a"><a href="analysis.html">Results and Analysis</a></li>
+        <ul>
+      </nav>
+      <h1>Results and Analysis</h1>
+    </header>
+    <h2>Results</h2>
+        <img src="InsuranceAsBMIIncreases.png">
+          <br>Line of best fit is y = 393.87303079739513 * x + 1192.937208961157
+          <br>The line's standard error is -6.602931534871459e-09
+          <br>-1.1186784831807017e-09
+          <br>BMI R Squared: -4.902439024390244
+
+
+        <img src="InsuranceAsNumberOfChildrenIncrease.png">
+          <br>Line of best fit is y = 683.089382481369 * x + 12522.495549644093
+          <br>The line's standard error is -1.4661054592579603e-09
+          <br>-1.1186784831807017e-09
+          <br>Children R Squared: -0.3105691056910569
+
+
+        <img src="InsuranceCostAsAgeIncreases.png">
+          <br>Line of best fit is y = 257.7226186668952 * x + 3165.8850060630393
+          <br>The line's standard error is -1.306034391745925e-09
+          <br>-1.1186784831807017e-09
+          <br>Age R Squared: -0.16747967479674797
+
+
+        <img src="InsuranceCostByRegion.png">
+          <br>Line of best fit is y = 128.60481381935662 * x + 13075.592700408943
+          <br>The line's standard error is -6.348273018375039e-10
+          <br>-1.1186784831807017e-09
+          <br>Region R Squared: 0.432520325203252
+
+
+
+        <img src="InsuranceOfMenVsWomen.png">
+          <br>Line of best fit is y = -1387.1723338865747 * x + 13956.751177721908
+          <br>The line's standard error is -7.530616130679846e-10
+          <br>-1.1186784831807017e-09
+          <br>Sex R Squared: 0.3268292682926829
+
+
+        <img src="InsuranceofSmokersVsNonSmokers.png">
+          <br>Line of best fit is y = 23615.963533676193 * x + 8434.268297856295
+          <br>The line's standard error is 3.128661774098873e-10
+          <br>-1.1186784831807017e-09
+          <br>Smoker R Squared: 1.2796747967479676
+
+    <h2>Analysis</h2>
+      <p>With this data, we are examining how a person’s insurance costs are
+        affected by several variables, and we are trying to determine if
+        there are any variables leading to people being unfairly charged.
+        Linear regression will be our primary way of determining how insurance
+        costs are impacted by a factor. The two factors that are used to
+        analyze this relationship are the line of best fit and the coefficient
+        of determination (also known as R-Squared).<br>
+        <br>
+        The use of regression showed that many of the categories proved to be
+         unhelpful when analyzed for their coefficient of determination.
+         While region had an R Squared value of about .43 and sex had an R
+         Squared value of about .33, age, bmi, and children had an R Squared
+         values between -0 and -1, and smoking had an R Squared value higher
+         than 1. When a variable’s R Squared value is not between the range of
+         0 and 1, it means that the data provided does not have accurate
+         explaining power for the dependent variable when analyzed using linear
+          regression.
+          <br>
+          While the coefficient of determination did not provide conclusive
+          explaining power for some of the categories, the line of best fit
+          for each variable is able to show us how insurance costs are
+          impacted. For age, it is clear that insurance costs increase as
+          one grows older. For sex, it appears that women are charged a minor
+          amount less compared to men. With bmi, it is apparent that insurance
+          cost increases along with a person’s weight, especially once the bmi
+          rises above 30. Children seem to also have a negative impact on
+          insurance costs, raising a person’s cost as the amount of children
+          they have increases. For smoking, it is obvious that smokers are
+          charged more for insurance than people who do not smoke. Region can
+          not accurately be analyzed by a line of best fit, due to the fact
+          that it is not truly a linear variable.
+</p>
+  </body>
+</html>

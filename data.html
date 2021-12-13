@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> CS4Good </title>
+    <meta charset="utf-8">
+    <link rel="StyleSheet" href="style.css">
+  </head>
+  <body>
+    <header id = "box">
+      <nav>
+        <ul class = "b">
+          <li class="a"><a href="index.html">Home</a></li>
+          <li class="a"><a href="data.html">Data</a></li>
+          <li class="a"><a href="LineReg.html">Linear Regression</a></li>
+          <li class="a"><a href="code.html">Program Code</a></li>
+          <li class="a"><a href="analysis.html">Results and Analysis</a></li>
+        <ul>
+      </nav>
+      <h1>Data Gathering, Data Ethics, and Data Manipulation</h1>
+      <div class="center-button">
+      <button type="button" style="font-size:30px" =20px
+      onclick="window.location.href='https://github.com/mlmarteja/CS4Good/blob/d3c9d3c4855fc9a3fa08345b2344ca2491c77c2e/insurance.csv'">
+        insurance.csv</button>
+    </header>
+  <body>
+    <h2>Data Gathering</h2>
+      <p>
+        Gathering data from a source requires a lot of filtering to get the
+         specific data necessary for your project. To filter data you can use
+         specific methods to remove unnecessary values from the data.
+         Those same methods can be modified to include other values that are
+         unnecessary for the data set you need. For example there is a way to
+         filter stop words from data. Stop words are commonly repeated words:
+         The, and, is, etc. That same method can be used to remove other words
+         or values from a set of data. The other part of gathering data is
+         storing the data. Depending on what is being stored it will require a
+         storage mechanism that accommodates the size and types of data.<br>
+         <br>
+         We used the following tools to collect this data:
+         <ul class="a">
+           <li class="b">Pandas</li>
+           <li class="b">Numpy</li>
+           <li class="b">matplotlib.pyplot</li>
+         </ul>
+       </p>
+        <p>
+          To read the csv file, we used <b>pandas.red_csv </b>(more info
+          at : <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">
+            https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html</a>)
+        </p>
+        <p>
+          Data collection and filtering is a fickle subject to master.
+           Starting out the idea is simple however, the more data that is utilized
+           the harder it gets. With more data, you have to start thinking in terms
+           of Big O notation. To fully grasp data collection for a regression or
+           classification algorithm you must understand big O.
+           This concept will make runtimes a lot smaller and the amount
+           of code.<br>
+           <br>
+        </p>
+
+
+    <h2>Data Ethics</h2>
+      <p>Ethics is another topic that is very important when dealing with data
+        sets. How you filter the data and with what filters matters. How you
+        get the data matters. When using a web crawler you can’t go get data
+        from any site because they could have a policy against site users
+        trying to scrape data from their site. Another part of ethics is
+        how you filter data. You want to use data that is diverse in nature.
+        For example when webcam facial recognition software was made the
+        software only recognised what the programers gave the software in
+        terms of the data set mainly white people. So when other people
+        tried to use the software the system didn't know what to do so it
+        didn't recognize people of color, or many other races when they tried
+        to use the software. It is recommended that thought goes into creating
+        a database so that any user of the software can use it correctly
+        without issue.</p>
+
+    <h2>Munging, Wanngling, and Cleaning Data</h2>
+      <p>The original data was not in a usable state, as much of the data was
+        words instead of numbers. In order to make this suitable for regression
+        analysis, I assigned each word a numeric value. For men and women, I
+        assigned them 0 and 1 respectively. In the smoking field, I made no 0
+        and yes 1. For the region, I assigned the regions a number in a
+        clockwise manner. Northwest became 0, Northeast became 1, Southeast
+        became 2, and Northeast became 3.<br>
+        <br>
+        We then deleted the empty columns that were used to increase user
+        readability but would make it harder for the computer to parse the
+        data.
+      </p>
+
+  </body>
+</html>
