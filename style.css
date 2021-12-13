@@ -55,6 +55,7 @@ p{
   margin-right: 200px;
   margin-bottom: 50px;
   font-family: Merriweather, serif;
+  font-size: 20px;
 }
 
 ul.a{
@@ -97,6 +98,11 @@ p.double{
   width: 400px;
   padding: 20px;
   font-family: Merriweather, serif;
+}
+
+p.names{
+  text-align: center;
+  color: white;
 }
 
 .
