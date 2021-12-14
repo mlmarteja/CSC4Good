@@ -1,6 +1,7 @@
 body {
-  background-color: #C7D8D3;
+  background-color: #E0E6E2;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+
 }
 
 ul.b{
@@ -118,7 +119,7 @@ p.names{
   color: white;
 }
 
-body{
-  background-color: #E0E6E2;
+pre code{
+  font-family: Merriweather, serif;
 }
 .
