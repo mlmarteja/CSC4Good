@@ -62,8 +62,8 @@ padding-bottom: 40px;
 }
 
 p{
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 250px;
+  margin-right: 250px;
   margin-bottom: 50px;
   font-family: Merriweather, serif;
   font-size: 20px;
@@ -74,7 +74,7 @@ ul.a{
 }
 
 li.b {
-  margin-left: 200px;
+  margin-left: 250px;
   font-family: Merriweather, serif;
   font-size: 20px;
 }
