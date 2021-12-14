@@ -23,114 +23,135 @@
         View on Program Code</button>
     </header>
   <body>
-      <pre><code class="language-python">
-        #Code by Braden Clough
-        #imports pandas to make use of a dataframe
-        import pandas
-        #imports pyplot as plt for graphing
-        import matplotlib.pyplot as plt
-        #imports the csv file as a dataframe
-        file = pandas.read_csv('insurance.csv')
-        #Creates a scatter plot of insurance cost and age
-        print("Insurance cost as age increases")
-        plt.scatter(file.age, file.charges, marker='o')
-        plt.show()
-        print("Insurance of men vs women")
-        plt.scatter(file.sex, file.charges, marker='o')
-        plt.show()
-        print("Insurance as BMI increases")
-        plt.scatter(file.bmi, file.charges, marker='o')
-        plt.show()
-        print("Insurance as number of children increases")
-        plt.scatter(file.children, file.charges, marker='o')
-        plt.show()
-        print("Insurance of smokers vs non smokers")
-        plt.scatter(file.smoker, file.charges, marker='o')
-        plt.show()
-        print("Insurance cost by region")
-        plt.scatter(file.region, file.charges, marker='o')
-        plt.show()
-
-
-        #calculates the mean of y for later use
-        yAverage = file.charges.mean()
-        #calculates SE of y's mean for later use
-        SEyAverage = 0
+    <p class="code">
+      These are the imports. More information about the imports can be found <a href="data.html">here</a>
+    </p>
+    <div class="codebox">
+      <pre><code>
+    #Code by Braden Clough
+    #imports pandas to make use of a dataframe
+    import pandas
+    #imports pyplot as plt for graphing
+    import matplotlib.pyplot as plt
+      </pre></code>
+    </div>
+        <p class="code">To red the csv, we used <code>pands.read_csv</code>.</p>
+      <div class="codebox"><pre><code>
+  #imports the csv file as a dataframe
+  file = pandas.read_csv('insurance.csv')
+</pre></code></div>
+        <p class="code">We made the graphs using pyplot's <code>scatter</code> function.
+        The function will take in the value of the independent varaible (ex. age), depednet varaible,
+         and the marker.</p>
+      <div class="codebox"><pre><code>
+    #Creates a scatter plot of insurance cost and age
+    print("Insurance cost as age increases")
+    plt.scatter(file.age, file.charges, marker='o')
+    plt.show()
+    print("Insurance of men vs women")
+    plt.scatter(file.sex, file.charges, marker='o')
+    plt.show()
+    print("Insurance as BMI increases")
+    plt.scatter(file.bmi, file.charges, marker='o')
+    plt.show()
+    print("Insurance as number of children increases")
+    plt.scatter(file.children, file.charges, marker='o')
+    plt.show()
+    print("Insurance of smokers vs non smokers")
+    plt.scatter(file.smoker, file.charges, marker='o')
+    plt.show()
+    print("Insurance cost by region")
+    plt.scatter(file.region, file.charges, marker='o')
+    plt.show()
+</pre></code></div>
+      <p class="code"> Caclculate the mean of the charges</p>
+    <div class="codebox">  <pre><code>
+    #calculates the mean of y for later use
+    yAverage = file.charges.mean()
+    #calculates SE of y's mean for later use
+    SEyAverage = 0
+    for i in range(0, len(file.charges)):
+        SEyAverage += file.charges[i] - yAverage
+      </pre></code></div>
+      <p class="code">The <code>calcRsquared</code> method will calculate the R-Squared
+        of by taking in the set of x values.</p>
+    <div class="codebox">  <pre><code>
+    #This method can calculate the R Squared using insurance cost as the Y axis and the parameter as the X axis
+    def calcRSquared(xColumn):
+        #calculates the mean of the x Axis
+        xAverage = xColumn.mean()
+        #calculates the top of the m function
+        mTop = 0
+        for i in range(0, len(xColumn)):
+            mTop += (xColumn[i] - xAverage) * (file.charges[i] - yAverage)
+        #calculates the bottom of the m function
+        mBottom = 0
+        for i in range(0, len(xColumn)):
+            mBottom+= pow((xColumn[i] - xAverage), 2)
+        #calculates m
+        m = mTop / mBottom
+        #calculates b
+        b = yAverage - m * xAverage
+        print("Line of best fit is y = " + str(m) + " * " + "x" + " + " + str(b))
+        #calculates SE of the line of best fit
+        SEline = 0
         for i in range(0, len(file.charges)):
-            SEyAverage += file.charges[i] - yAverage
+            SEline += file.charges[i] - (m * xColumn[i] + b)
+        print("The line's standard error is " + str(SEline))
+        #calculates and returns R Squared
+        print(SEyAverage)
+        rSquared = 1 - (SEline / SEyAverage)
+        return rSquared
+        </pre></code></div>
+      <p class="code">These lines of code will print out the values of R Squared</p>
+  <div class="codebox">  <pre><code>>
+    #Calculates R Squared for all the relevant categories
+    print("Calculating Age")
+    ageRSquared = calcRSquared(file.age)
+    print("Age R Squared: " + str(ageRSquared))
+    print(" ")
+    print("Calculating Sex")
+    sexRSquared = calcRSquared(file.sex)
+    print("Sex R Squared: " + str(sexRSquared))
+    print(" ")
+    print("Calculating BMI")
+    bmiRSquared = calcRSquared(file.bmi)
+    print("BMI R Squared: " + str(bmiRSquared))
+    print(" ")
+    print("Calculating children")
+    childrenRSquared = calcRSquared(file.children)
+    print("Children R Squared: " + str(childrenRSquared))
+    print(" ")
+    print("Calculating smoking")
+    smokerRSquared = calcRSquared(file.smoker)
+    print("Smoker R Squared: " + str(smokerRSquared))
+    print(" ")
+    print("Calculating region")
+    regionRSquared = calcRSquared(file.region)
+    print("Region R Squared: " + str(regionRSquared))
+    </pre></code></div>
+    <p class="code">This will create a list of tuples to title axis of the graphs</p>
+    <div class="codebox">  <pre><code>
+    #Creates a list of tuples, with each tuple consisting of the title of the axis as well as its R Squared value.
+    #This will be used to calculate the best R Squared
+    rSquaredTuples = []
+    rSquaredTuples.append(("age", ageRSquared))
+    rSquaredTuples.append(("sex", sexRSquared))
+    rSquaredTuples.append(("BMI", bmiRSquared))
+    rSquaredTuples.append(("children", childrenRSquared))
+    rSquaredTuples.append(("smoking", smokerRSquared))
+    rSquaredTuples.append(("region", regionRSquared))
 
-        #This method can calculate the R Squared using insurance cost as the Y axis and the parameter as the X axis
-        def calcRSquared(xColumn):
-            #calculates the mean of the x Axis
-            xAverage = xColumn.mean()
-            #calculates the top of the m function
-            mTop = 0
-            for i in range(0, len(xColumn)):
-                mTop += (xColumn[i] - xAverage) * (file.charges[i] - yAverage)
-            #calculates the bottom of the m function
-            mBottom = 0
-            for i in range(0, len(xColumn)):
-                mBottom+= pow((xColumn[i] - xAverage), 2)
-            #calculates m
-            m = mTop / mBottom
-            #calculates b
-            b = yAverage - m * xAverage
-            print("Line of best fit is y = " + str(m) + " * " + "x" + " + " + str(b))
-            #calculates SE of the line of best fit
-            SEline = 0
-            for i in range(0, len(file.charges)):
-                SEline += file.charges[i] - (m * xColumn[i] + b)
-            print("The line's standard error is " + str(SEline))
-            #calculates and returns R Squared
-            print(SEyAverage)
-            rSquared = 1 - (SEline / SEyAverage)
-            return rSquared
+    #Creates a base value tuple that should be replaced when the tuples are compared to each other
+    bestRIndex = ("Error", -1000000)
 
-        #Calculates R Squared for all the relevant categories
-        print("Calculating Age")
-        ageRSquared = calcRSquared(file.age)
-        print("Age R Squared: " + str(ageRSquared))
-        print(" ")
-        print("Calculating Sex")
-        sexRSquared = calcRSquared(file.sex)
-        print("Sex R Squared: " + str(sexRSquared))
-        print(" ")
-        print("Calculating BMI")
-        bmiRSquared = calcRSquared(file.bmi)
-        print("BMI R Squared: " + str(bmiRSquared))
-        print(" ")
-        print("Calculating children")
-        childrenRSquared = calcRSquared(file.children)
-        print("Children R Squared: " + str(childrenRSquared))
-        print(" ")
-        print("Calculating smoking")
-        smokerRSquared = calcRSquared(file.smoker)
-        print("Smoker R Squared: " + str(smokerRSquared))
-        print(" ")
-        print("Calculating region")
-        regionRSquared = calcRSquared(file.region)
-        print("Region R Squared: " + str(regionRSquared))
+    #Finds the highest explaining power by comparing the R Value of each tuple against each other and recording the best one
+    #This comparison disregards R Squareds with a value higher than 1, as those are too inaccurate to have value for regression
+    for i in range(0, len(rSquaredTuples)):
+        if(rSquaredTuples[i][1] > bestRIndex[1] and rSquaredTuples[i][1] <= 1):
+            bestRIndex = rSquaredTuples[i]
+    print("The factor with the best explaining power for insurance cost is " + str(bestRIndex[0]) + " with an explaining power of " + str(bestRIndex[1]))
 
-        #Creates a list of tuples, with each tuple consisting of the title of the axis as well as its R Squared value.
-        #This will be used to calculate the best R Squared
-        rSquaredTuples = []
-        rSquaredTuples.append(("age", ageRSquared))
-        rSquaredTuples.append(("sex", sexRSquared))
-        rSquaredTuples.append(("BMI", bmiRSquared))
-        rSquaredTuples.append(("children", childrenRSquared))
-        rSquaredTuples.append(("smoking", smokerRSquared))
-        rSquaredTuples.append(("region", regionRSquared))
-
-        #Creates a base value tuple that should be replaced when the tuples are compared to each other
-        bestRIndex = ("Error", -1000000)
-
-        #Finds the highest explaining power by comparing the R Value of each tuple against each other and recording the best one
-        #This comparison disregards R Squareds with a value higher than 1, as those are too inaccurate to have value for regression
-        for i in range(0, len(rSquaredTuples)):
-            if(rSquaredTuples[i][1] > bestRIndex[1] and rSquaredTuples[i][1] <= 1):
-                bestRIndex = rSquaredTuples[i]
-        print("The factor with the best explaining power for insurance cost is " + str(bestRIndex[0]) + " with an explaining power of " + str(bestRIndex[1]))
-
-            </code></pre>
+</code></pre></div>
   </body>
 </html>
